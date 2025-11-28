@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Tennis_Booking_Deploy/static/css/main.1847ae44.css",
-    "main.js": "/Tennis_Booking_Deploy/static/js/main.dcd838d9.js",
+    "main.js": "/Tennis_Booking_Deploy/static/js/main.ce65e32a.js",
     "index.html": "/Tennis_Booking_Deploy/index.html",
     "main.1847ae44.css.map": "/Tennis_Booking_Deploy/static/css/main.1847ae44.css.map",
-    "main.dcd838d9.js.map": "/Tennis_Booking_Deploy/static/js/main.dcd838d9.js.map"
+    "main.ce65e32a.js.map": "/Tennis_Booking_Deploy/static/js/main.ce65e32a.js.map"
   },
   "entrypoints": [
     "static/css/main.1847ae44.css",
-    "static/js/main.dcd838d9.js"
+    "static/js/main.ce65e32a.js"
   ]
 }
