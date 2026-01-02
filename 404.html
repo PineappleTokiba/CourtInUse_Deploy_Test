@@ -12,18 +12,38 @@
     <script>
         (function() {
             var originalPath = window.location.pathname + window.location.search + window.location.hash;
-            fetch('/index.html').then(function(r) {
-                return r.text();
-            }).then(function(html) {
-                document.open();
-                document.write(html);
-                document.close();
-                try {
-                    history.replaceState({}, '', originalPath);
-                } catch (e) {}
-            }).catch(function() {
-                window.location.replace('/');
-            });
+            var tried = 0;
+            var parentIndex = (function() {
+                var parts = window.location.pathname.split('/');
+                parts.pop();
+                return (parts.join('/') || '/') + 'index.html';
+            })();
+            var candidates = ['/index.html', 'index.html', parentIndex];
+
+            function tryFetch() {
+                if (tried >= candidates.length) {
+                    window.location.replace('/');
+                    return;
+                }
+                fetch(candidates[tried], {
+                    cache: 'no-store'
+                }).then(function(r) {
+                    if (!r.ok) throw new Error('not ok');
+                    return r.text();
+                }).then(function(html) {
+                    document.open();
+                    document.write(html);
+                    document.close();
+                    try {
+                        history.replaceState({}, '', originalPath);
+                    } catch (e) {}
+                }).catch(function() {
+                    tried++;
+                    tryFetch();
+                });
+            }
+
+            tryFetch();
         })();
     </script>
 </body>
