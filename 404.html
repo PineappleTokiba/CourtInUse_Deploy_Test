@@ -14,14 +14,14 @@
             // If the request reached the apex (courtinuse.com) serve a client-side
             // redirect to the www hostname while preserving pathname/search/hash.
             // This is a JS fallback only — a server 301 is still preferred.
-            // try {
-            //     var host = (window.location.hostname || '').toLowerCase();
-            //     if (host === 'courtinuse.com') {
-            //         var dest = 'https://www.courtinuse.com' + window.location.pathname + window.location.search + window.location.hash;
-            //         window.location.replace(dest);
-            //         return;
-            //     }
-            // } catch (e) {}
+            try {
+                var host = (window.location.hostname || '').toLowerCase();
+                if (host === 'courtinuse.com') {
+                    var dest = 'https://www.courtinuse.com' + window.location.pathname + window.location.search + window.location.hash;
+                    window.location.replace(dest);
+                    return;
+                }
+            } catch (e) {}
 
             // Existing SPA fallback: try common locations for the app shell and
             // write the index HTML into the document so the client router can handle the URL.
